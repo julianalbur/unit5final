@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The suggestion box</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+        <body>
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder = "Fname" id="first_name" type="text" class="validate">
+                  <label for="first_name"></label>
+                </div>
+                <div class="input-field col s6">
+                  <input placeholder="Lname" id="Lname" type="text" class="validate">
+                  <label for="last_name"></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="message" id="password" type="text" class="validate">
+                  <label for="password"></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12" id="submit">
+                    <center><a class="waves-effect waves-light btn">Submit</a></center>
+                </div>
+              </div>
+            </form>
+        </div>
+            <script>
+                $(document).ready(function(){
+                $("#submit").click(function(){
+                    $.ajax({
+                        url:"http://104.131.17.187:4004/suggestions",
+                        success: function(resp, text, xhr){
+                        method: "post";
+                        console.log(resp);
+                        data: Fname: <input type="text" name="Fname" ><br>
+                              Lname: <input type="text" name"Lname" ><br>
+                        
+                    }
+                });
+            });
+        });
+            </script>
+        </body>
+</html>
