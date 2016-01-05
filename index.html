@@ -12,20 +12,24 @@
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s6">
-                  <input placeholder = "Fname" id="first_name" type="text" class="validate">
+                  <input placeholder = "fname" id="fname" type="text" class="validate" input name="fname">
                   <label for="first_name"></label>
                 </div>
                 <div class="input-field col s6">
-                  <input placeholder="Lname" id="Lname" type="text" class="validate">
+                  <input placeholder="lname" id="lname" type="text" class="validate" input name="lname">
                   <label for="last_name"></label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input placeholder="message" id="password" type="text" class="validate">
+                  <input placeholder="message" id="message" type="text" class="validate" input name="message">
                   <label for="password"></label>
                 </div>
               </div>
+                <div class="input-field col s12" style="visibility:hidden">
+                  <input placeholder="fullname" id="fullname" type="text" class="validate" input name="serviceName">
+                  <label for="password">Julian J Alburquerque</label>
+                </div>
               <div class="row">
                 <div class="input-field col s12" id="submit">
                     <center><a class="waves-effect waves-light btn">Submit</a></center>
@@ -39,12 +43,17 @@
                     $.ajax({
                         url:"http://104.131.17.187:4004/suggestions",
                         success: function(resp, text, xhr){
-                        method: "post";
-                        console.log(resp);
-                        data: Fname: <input type="text" name="Fname" ><br>
-                              Lname: <input type="text" name"Lname" ><br>
-                        
-                    }
+                            $(".row").html(resp, text, xhr);
+                            console.log(resp);
+                        },
+                        method: "post",
+                        data:{
+                            fname: $("#fname").val(),
+                            lname: $("#lname").val(),
+                            message: $("#message").val(),
+                            serviceName: ("julian Albur"),
+    
+                        }
                 });
             });
         });
